@@ -1,0 +1,31 @@
+plugins {
+    id "java"
+    id 'groovy'
+    id 'application'
+}
+group 'org.tk'
+version '1.0-SNAPSHOT'
+ext {
+    javaMainClass = "org.tk.Main"
+}
+repositories {
+    mavenCentral()
+}
+dependencies {
+    implementation "org.slf4j:slf4j-simple:2.0.6"
+    implementation 'org.apache.kafka:kafka-clients:3.1.2'
+    implementation 'org.apache.kafka:kafka-streams:3.1.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    compileOnly 'org.projectlombok:lombok:1.18.26'
+    annotationProcessor 'org.projectlombok:lombok:1.18.26'
+}
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+application {
+    mainClass.set("org.tk.Main")
+}
+
+test {
+    useJUnitPlatform()
+}
