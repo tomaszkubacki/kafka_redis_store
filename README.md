@@ -19,5 +19,5 @@ flowchart TB
     click IN callback "Kafka Topic: input-topic"
     click OUT callback "Kafka Topic: output-topic"
     click APP callback "Kafka streams app: upper casing operation"
-    classDef someclass fill:#006
+    classDef someclass fill: #0000ff, color: white
 ```
