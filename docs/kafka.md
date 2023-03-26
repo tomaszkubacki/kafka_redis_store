@@ -27,15 +27,19 @@ KStreams is a stream of data in created in the app
 
 ### KStreams
 
-> KStream
-: is an unbound log of key/value entries, which could be processed by java program
+> KStream definition
+: is an abstraction of partitioned record stream, in which data is represented using insert semantics 
+> i.e. each record is independent of other events 
+
+As a developer you can consider KStream as never ending (unbound) event log, 
+which you can modify using kafka stream operations.
 
 important properties:
 - always insert only
 - similar to Log
 - unbounded data stream
 
-what does unbound mean ?
+what does the unbound mean ?
 : having start but not end - being possibly infinite at the end
 
 
