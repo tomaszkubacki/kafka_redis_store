@@ -140,7 +140,7 @@ stream.flatMapValues(value -> value.split("\\s+"));
 gives us:
 ```mermaid
 timeline
-    title filter values - flat map split by white chars
+    title flat map split by white chars
     1, cat : 1, cat
     2, dog and cat  : 2, dog     
                     : 2, and
