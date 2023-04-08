@@ -33,6 +33,15 @@ docker exec -it broker kafka-topics \
     --partitions 3 \
     --topic 'output-topic'
 ```
+
+create **dead-end-topic**
+```shell
+docker exec -it broker kafka-topics \
+    --bootstrap-server localhost:9092 \
+    --create \
+    --partitions 3 \
+    --topic 'dead-end-topic'
+```
 #### start application
 ###### Optional step: restore gradle wrapper
 ```shell

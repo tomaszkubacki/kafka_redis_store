@@ -72,16 +72,22 @@ what does the unbound mean ?
 | (a,null)          | (b,2), (c,3)        |
 
 
-### KStream/KTable most popular operations
+### KStream/KTable transformations
 
-### Map values and Map
+There are two main categories of transformations: **stateless** and **stateful** transformations
+
+
+### Stateless Transformations
+Stateless transformations are transformations which do not require state for processing.
+Below you could find a couple of basic stateless transformations examples with processing visualization. 
+
+Detailed documentation can be found at [Stateless Transformations] documentation page.
+
+#### mapValues and map 
 
 Mapping values in record stream
 
 *mapValue* and *map*
-
-
-#### mapValues
 
 e.g.
 Let's assume our source is stream of key value events, where **key is an integer** and **value is a string**.
@@ -108,7 +114,7 @@ repartitioning operations
 thus use mapValues whenever possible
 
 
-### Filter and filterNot
+#### Filter and filterNot
 
 Filtering records in stream
 
@@ -127,7 +133,7 @@ timeline
     3, san 
     4, you
 ```
-### Flatmap
+#### Flatmap
 
 Takes one record and produces zero one or more records
 
@@ -148,8 +154,9 @@ timeline
     3, you win! :   3, you
                 :   3, win!
 ```
-### Split
+#### Split
 
-Split operation is a successor of branch operation
+Split stream into branches which could e.g as a result be sent to a different topics.
 
-TODO: add split example
+
+[Stateless Transformations]: https://docs.confluent.io/platform/current/streams/developer-guide/dsl-api.html#stateless-transformations
