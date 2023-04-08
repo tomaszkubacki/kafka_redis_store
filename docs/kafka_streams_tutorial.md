@@ -156,7 +156,22 @@ timeline
 ```
 #### Split
 
-Split stream into branches which could e.g split input stream by words starting with "A" letter and send them to **output topic** and all other to **dead-end topic**
+Split stream into branches.
+
+e.g. split input stream records by value into branches **branch-a** and **branch-b** 
+by words starting with letter **a** and send them to **output topic** and all other to **dead-end topic**
+
+```jshelllanguage
+    var branches = stream.split(Named.as("branch-"))
+             .branch((k, v) -> v.startsWith("a"), 
+                       Branched.as("a"))
+                .branch((k, v) -> !v.startsWith("a"),
+                        Branched.as("b"))
+                .noDefaultBranch();
+    branches.get("branch-a").to(outputTopic, Produced.with(stringSerde, stringSerde));
+    branches.get("branch-b").to(deadEndTopic, Produced.with(stringSerde, stringSerde));
+```
+
 
 ![Split diagram](split_diagram.svg "split diagram")
 
