@@ -1,0 +1,25 @@
+<svg width="1000" height="500" version="1.1" xmlns="http://www.w3.org/2000/svg">
+
+    <text x="0" y="70" font-family="Verdana" font-size="25" font-weight="700" fill="black">input</text>
+    <rect x="110" y="10" rx="10" width="100" height="100" fill="blue" stroke-width="5"/>
+    <text x="130" y="70" font-family="Verdana" font-size="35" fill="white">abc</text>
+    <rect x="230" y="10" rx="10" width="100" height="100" fill="orange" stroke-width="5"/>
+    <text x="250" y="70" font-family="Verdana" font-size="35" fill="white">xyz</text>
+    <rect x="350" y="10" rx="10" width="100" height="100" fill="green" stroke-width="5"/>
+    <text x="370" y="70" font-family="Verdana" font-size="35" fill="white">avg</text>
+    <line x1="10" x2="1000" y1="130" y2="130" stroke="black" stroke-width="4"/>
+    <g transform="translate(0 145)">
+        <text x="0" y="70" font-family="Verdana" font-weight="700" font-size="25" fill="black">output</text>
+        <rect x="110" y="10" rx="10" width="100" height="100" fill="blue" stroke-width="5"/>
+        <text x="130" y="70" font-family="Verdana" font-size="35" fill="white">abc</text>
+
+        <rect x="350" y="10" rx="10" width="100" height="100" fill="green" stroke-width="5"/>
+        <text x="370" y="70" font-family="Verdana" font-size="35" fill="white">avg</text>
+        <line x1="10" x2="1000" y1="130" y2="130" stroke="black" stroke-width="4"/>
+    </g>
+    <g transform="translate(0 285)">
+        <text x="0" y="70" font-family="Verdana" font-weight="700" font-size="25" fill="black">dead-end</text>
+        <rect x="230" y="10" rx="10" width="100" height="100" fill="orange" stroke-width="5"/>
+        <text x="250" y="70" font-family="Verdana" font-size="35" fill="white">xyz</text>
+    </g>
+</svg>

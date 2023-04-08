@@ -137,7 +137,7 @@ timeline
 
 Takes one record and produces zero one or more records
 
-e.g. remove all messages with value lower than 3
+e.g. split input messages by white characters
 
 ```jshelllanguage
 // using lambda expression on KStream<byte[],String>
@@ -156,7 +156,9 @@ timeline
 ```
 #### Split
 
-Split stream into branches which could e.g as a result be sent to a different topics.
+Split stream into branches which could e.g split input stream by words starting with "A" letter and send them to **output topic** and all other to **dead-end topic**
+
+![Split diagram](split_diagram.svg "split diagram")
 
 
 [Stateless Transformations]: https://docs.confluent.io/platform/current/streams/developer-guide/dsl-api.html#stateless-transformations
