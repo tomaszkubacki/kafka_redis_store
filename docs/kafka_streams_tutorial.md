@@ -112,13 +112,21 @@ thus use mapValues whenever possible
 
 Filtering records in stream
 
-e.g. remove all records with value lower than 3
+e.g. remove all records not starting with "a"
 
 ```jshelllanguage
 // using lambda expression on KStream<byte[],String>
-stream.filter((key, value) -> value >= 3);
+stream.filter((key, value) -> value.startsWith("a"));
 ```
-
+gives us:
+```mermaid
+timeline
+    title filter values - to only those starting with "a"
+    1, aaa : 1, aaa
+    2, abc : 2, abc     
+    3, san 
+    4, you
+```
 ### Flatmap
 
 Takes one record and produces zero one or more records
@@ -129,7 +137,17 @@ e.g. remove all messages with value lower than 3
 // using lambda expression on KStream<byte[],String>
 stream.flatMapValues(value -> value.split("\\s+"));
 ```
-
+gives us:
+```mermaid
+timeline
+    title filter values - flat map split by white chars
+    1, cat : 1, cat
+    2, dog and cat  : 2, dog     
+                    : 2, and
+                    : 2, cat
+    3, you win! :   3, you
+                :   3, win!
+```
 ### Split
 
 Split operation is a successor of branch operation

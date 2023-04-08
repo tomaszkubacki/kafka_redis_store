@@ -1,5 +1,6 @@
 package org.tk;
 
+import java.util.Arrays;
 import java.util.Properties;
 import java.util.concurrent.CountDownLatch;
 
@@ -59,12 +60,13 @@ public class Main {
     }
 
     static Topology buildTopology(String inputTopic, String outputTopic) {
-        Serde<String> stringSerde = Serdes.String();
+        final Serde<String> stringSerde = Serdes.String();
         StreamsBuilder builder = new StreamsBuilder();
-        builder
-                .stream(inputTopic, Consumed.with(stringSerde, stringSerde))
+        builder.stream(inputTopic, Consumed.with(stringSerde, stringSerde))
                 .peek((k,v) -> logger.info("Observed event: {}", v))
                 .mapValues(s -> s.toUpperCase())
+                .filter((k,v) -> v.startsWith("A")) // already uppercased !
+                .flatMapValues(v -> Arrays.asList(v.split("\\s+")))
                 .peek((k,v) -> logger.info("Transformed event: {}", v))
                 .to(outputTopic, Produced.with(stringSerde, stringSerde));
         return builder.build();
