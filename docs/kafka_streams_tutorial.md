@@ -80,16 +80,33 @@ Mapping values in record stream
 
 *mapValue* and *map*
 
-eg. 
 
+#### mapValues
+
+e.g.
+Let's assume our source is stream of key value events, where **key is an integer** and **value is a string**.
+
+Stream is processed as follows:
 ```jshelllanguage
 // using lambda expression on KStream<byte[],String>
 stream.mapValues(value -> value.toUpperCase());
 ```
+Each event in the stream is processed one by one as it's shown on a timeline:
+ 
+```mermaid
+timeline
+    title map values - uppercase
+    1, aaa : 1, AAA
+    2, abc : 2, ABC     
+    3, san : 3, SAN
+    4, you: 4, YOU
+```
+> TIP: notice that the keys are not changed in the output stream
 
 repartitioning operations
-: mapValues is cheaper than map, since map is causing repartitioning, 
-  thus use mapValues whenever possible
+: mapValues is cheaper than map, since map is causing repartitioning,
+thus use mapValues whenever possible
+
 
 ### Filter and filterNot
 
@@ -118,4 +135,3 @@ stream.flatMapValues(value -> value.split("\\s+"));
 Split operation is a successor of branch operation
 
 TODO: add split example
-

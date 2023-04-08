@@ -1,24 +1,55 @@
 ## Kafka Streams Demo
 
-Is a naive implementation of Kafka's ReadOnlyStore - just to compare it with RocksDB
+This project is meant to explain how Kafka Streams and KsqlDB works
+
+Open [Kafka streams tutorial] in the docs folder.
+
+For more information see [Kafka Streams docs] and [Ksql DB reference] 
 
 
+### How to run
 
-```mermaid
-flowchart TB
-    subgraph Java application
-        APP{{Stream Uppercase}}:::someclass
-    end
-        IN --> APP
-        APP --> OUT
-    subgraph Kafka
-        direction LR
-        IN(input topic) 
-        OUT(output topic)
-    end
-        
-    click IN callback "Kafka Topic: input-topic"
-    click OUT callback "Kafka Topic: output-topic"
-    click APP callback "Kafka streams app: upper casing operation"
-    classDef someclass fill: #0000ff, color: white
+#### start containers
+
+```shell
+cd docker
+docker-compose up -d
 ```
+
+#### create input and output topics
+create **input-topic**
+```shell
+docker exec -it broker kafka-topics \
+    --bootstrap-server localhost:9092 \
+    --create \
+    --partitions 3 \
+    --topic 'input-topic'
+```
+create **output-topic**
+```shell
+docker exec -it broker kafka-topics \
+    --bootstrap-server localhost:9092 \
+    --create \
+    --partitions 3 \
+    --topic 'output-topic'
+```
+#### start application
+###### Optional step: restore gradle wrapper
+```shell
+gradle wrapper
+```
+###### start solution
+```shell
+./gradlew run
+```
+#### Once you finish, clean up all containers 
+
+###### stop and remove containers
+```shell
+cd docker
+docker-compose down
+```
+
+[Kafka Streams docs]: https://kafka.apache.org/34/documentation/streams/
+[Ksql DB reference]: https://docs.ksqldb.io/en/latest/reference/
+[Kafka streams tutorial]: ./docs/kafka_streams_tutorial.md

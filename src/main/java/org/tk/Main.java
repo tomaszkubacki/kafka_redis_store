@@ -15,6 +15,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.kafka.streams.kstream.Produced;
 
+import static java.lang.Thread.currentThread;
+
 
 public class Main {
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
@@ -50,7 +52,7 @@ public class Main {
         try {
             latch.await();
         } catch (final InterruptedException e) {
-            throw new RuntimeException(e);
+            currentThread().interrupt();
         }
 
         logger.info("Streams Closed");
