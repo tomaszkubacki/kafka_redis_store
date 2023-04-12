@@ -39,9 +39,11 @@ important properties:
 - similar to Log
 - unbounded data stream
 
-what does the *unbound* mean ?
-: having start but not end - being possibly infinite at the end
+> what does the *unbound* mean ?
+> 
+> having start but not end - being possibly infinite at the end
 
+Here is how KStream content looks like (right column) after new records appear in Kafka
 
 | Topic(key, value) | KStream             |
 |-------------------|---------------------|
@@ -61,8 +63,9 @@ what does the *unbound* mean ?
 - similar to table
 - parallel with log compacted topics
 
+Here is how KTable content looks like when adding new records in Kafka
 
-| Topic(key, value) | KStream             |
+| Topic(key, value) | KTable              |
 |-------------------|---------------------|
 | (a,1)             | (a,1)               |
 | (b,1)             | (a,1), (b,1)        | 
