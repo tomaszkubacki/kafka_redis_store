@@ -1,4 +1,4 @@
-### Kafka Streams explained
+## Kafka Streams explained
 
 Kafka streams is a Java library to process data from Kafka topics and save data to kafka topics
 
@@ -20,15 +20,15 @@ flowchart TB
     click KStream callback "Kafka streams in app memory"
     classDef someclass fill: #0000ff, color: white
 ```
+### Basic concepts
 
-## Kafka Streams artifacts
+To understand Kafka streams it's necessary to become familiar with a few concepts. 
+The most important among them are: **KStream** and **KTable**.
 
-KStreams is a stream of data in created in the app
-
-### KStreams
+#### KStream
 
 > KStream definition
-: is an abstraction of partitioned record stream, in which data is represented using insert semantics 
+: KStream is an abstraction of partitioned record stream, in which data is represented using insert semantics 
 > i.e. each record is independent of other events 
 
 As a developer you can consider KStream as never ending (unbound) event log, 
@@ -39,7 +39,7 @@ important properties:
 - similar to Log
 - unbounded data stream
 
-what does the unbound mean ?
+what does the *unbound* mean ?
 : having start but not end - being possibly infinite at the end
 
 
@@ -50,11 +50,11 @@ what does the unbound mean ?
 | (a,2)             | (a,1), (b,1), (a,2) |
 
 
-### KTable
+#### KTable
 
 
-> KTable
-: is a table of key value records, which are upserted 
+> KTable definition
+: KTable is a table of key value records, which are upserted 
 
 - upserts on non null values
 - deletes on null values
@@ -74,16 +74,16 @@ what does the unbound mean ?
 
 ### KStream/KTable transformations
 
-There are two main categories of transformations: **stateless** and **stateful** transformations
+There are two main categories of transformations in kafka streams: **stateless** and **stateful** transformations
 
 
-### Stateless Transformations
+#### Stateless Transformations
 Stateless transformations are transformations which do not require state for processing.
 Below you could find a couple of basic stateless transformations examples with processing visualization. 
 
 Detailed documentation can be found at [Stateless Transformations] documentation page.
 
-#### mapValues and map 
+##### mapValues and map 
 
 Mapping values in record stream
 
@@ -114,7 +114,7 @@ repartitioning operations
 thus use mapValues whenever possible
 
 
-#### Filter and filterNot
+##### Filter and filterNot
 
 Filtering records in stream
 
@@ -133,7 +133,7 @@ timeline
     3, san 
     4, you
 ```
-#### Flatmap
+##### Flatmap
 
 Takes one record and produces zero one or more records
 
@@ -154,7 +154,7 @@ timeline
     3, you win! :   3, you
                 :   3, win!
 ```
-#### Split
+##### Split
 
 Split stream into branches.
 
@@ -172,8 +172,10 @@ by words starting with letter **a** and send them to **output topic** and all ot
     branches.get("branch-b").to(deadEndTopic, Produced.with(stringSerde, stringSerde));
 ```
 
-
 ![Split diagram](split_diagram.svg "split diagram")
 
+#### Stateful Transformations
+
+**TODO**
 
 [Stateless Transformations]: https://docs.confluent.io/platform/current/streams/developer-guide/dsl-api.html#stateless-transformations
