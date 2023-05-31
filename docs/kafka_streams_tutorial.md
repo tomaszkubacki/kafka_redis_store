@@ -2,6 +2,16 @@
 
 Kafka streams is a Java library to process data from Kafka topics and save data to kafka topics
 
+### Why use Kafka Streams ?
+
+Kafka streams and dataflow programming has several advantages when used for stream processing.
+
+1) easy to reason: It's easy to reason about program represented as directed graph, no need to track complicated "if logic" to track data flow. 
+ Source and sink can be easily identified. Easy to reason about each step, where data can be enriched, transformed and send to sink.
+2) easy to visualize: Directed graphs are easy to visualize and easy to communicate with non-technicals
+3) easy to parallelize: Kafka streams contains abstractions helping create processing templates which are easy to parallelize 
+
+
 ```mermaid
 flowchart TB
     subgraph Java application
@@ -179,6 +189,14 @@ by words starting with letter **a** and send them to **output topic** and all ot
 
 #### Stateful Transformations
 
+1) Joining: Enrich an event with additional information or context
+that was captured in a separate stream or tableOperators
+2) Aggregating: Compute a continuously updating mathematical or
+combinatorial transformation of related events
+3) Windowing data:Group events that have close temporal proximity
+
 **TODO**
+
+
 
 [Stateless Transformations]: https://docs.confluent.io/platform/current/streams/developer-guide/dsl-api.html#stateless-transformations
