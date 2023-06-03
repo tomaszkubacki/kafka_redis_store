@@ -17,14 +17,22 @@ docker-compose up -d
 ```
 
 #### create input and output topics
-create **input-topic**
+create **input-topics**
 ```shell
 docker exec -it broker kafka-topics \
     --bootstrap-server localhost:9092 \
     --create \
     --partitions 3 \
-    --topic 'input-topic'
+    --topic 'input-topic-A'
 ```
+```shell
+docker exec -it broker kafka-topics \
+    --bootstrap-server localhost:9092 \
+    --create \
+    --partitions 3 \
+    --topic 'input-topic-B'
+```
+
 create **output-topic**
 ```shell
 docker exec -it broker kafka-topics \
