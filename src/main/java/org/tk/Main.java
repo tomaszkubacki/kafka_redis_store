@@ -20,7 +20,7 @@ public class Main {
 
     public static void main(String[] args) {
         Properties config = new Properties();
-        config.put(StreamsConfig.APPLICATION_ID_CONFIG, "my-app");
+        config.put(StreamsConfig.APPLICATION_ID_CONFIG, "my-streaming-app");
         config.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:29092");
         config.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
         config.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, String().getClass());
@@ -57,6 +57,7 @@ public class Main {
     static Topology buildTopology() {
         StreamsBuilder builder = new StreamsBuilder();
         new FilterStreamBuilder().build(builder);
+        new MergeStreamBuilder().build(builder);
         return builder.build();
     }
 

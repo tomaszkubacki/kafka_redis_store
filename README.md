@@ -33,6 +33,17 @@ docker exec -it broker kafka-topics \
     --topic 'input-topic-B'
 ```
 
+```shell
+docker exec -it broker kafka-topics \
+    --bootstrap-server localhost:9092 \
+    --config "cleanup.policy=compact" \
+    --create \
+    --partitions 3 \
+    --topic 'input-topic-lookup'
+```
+
+
+
 create **output-topic**
 ```shell
 docker exec -it broker kafka-topics \
